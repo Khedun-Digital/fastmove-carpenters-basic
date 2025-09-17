@@ -5,14 +5,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const phoneHref = phoneDisplay.replace(/[^+\d]/g, '');
   const whatsappE164 = root.dataset.whatsappE164 || '';
 
-  // Update tel: links text and href
-  document.querySelectorAll('a[href^="tel:"]').forEach(a => {
+  // Update tel: links and phone display
+  document.querySelectorAll('a[href^="tel:"], .phone-link').forEach(a => {
     if (phoneHref) a.setAttribute('href', `tel:${phoneHref}`);
     if (phoneDisplay) a.textContent = phoneDisplay;
   });
+  
+  // Update phone display spans
+  document.querySelectorAll('.phone-display').forEach(span => {
+    if (phoneDisplay) span.textContent = phoneDisplay;
+  });
 
   // Update WhatsApp links
-  document.querySelectorAll('a[href*="wa.me"]').forEach(a => {
+  document.querySelectorAll('a[href*="wa.me"], .whatsapp-link').forEach(a => {
     if (whatsappE164) a.setAttribute('href', `https://wa.me/${whatsappE164}`);
   });
 
