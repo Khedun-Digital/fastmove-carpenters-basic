@@ -1,0 +1,362 @@
+/* Mobile-first responsive design and optimizations */
+
+/* Touch-friendly interactions */
+@media (hover: none) and (pointer: coarse) {
+  /* Remove hover effects on touch devices */
+  .btn:hover,
+  .card:hover,
+  .floating-cta:hover {
+    transform: none;
+    box-shadow: var(--shadow);
+  }
+  
+  /* Add touch feedback */
+  .btn:active {
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
+  }
+  
+  .card:active {
+    transform: translateY(1px);
+    transition: transform 0.1s ease;
+  }
+}
+
+/* Enhanced mobile navigation */
+@media (max-width: 900px) {
+  .menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px; /* Apple's minimum touch target */
+    min-width: 44px;
+    padding: 8px 12px;
+    position: relative;
+    z-index: 60;
+  }
+  
+  #mainNav ul {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    padding: 80px 20px 20px;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: var(--transition-smooth) opacity, var(--transition-smooth) transform;
+    z-index: 50;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  #mainNav.open ul {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  #mainNav ul li {
+    margin: 0;
+  }
+  
+  #mainNav ul li a {
+    display: block;
+    padding: 16px 20px;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 12px;
+    text-align: center;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Close button overlay */
+  #mainNav.open::before {
+    content: '✕';
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+    z-index: 60;
+    cursor: pointer;
+  }
+}
+
+/* Enhanced mobile layout */
+@media (max-width: 768px) {
+  /* Better spacing for mobile */
+  .container {
+    width: min(100%, calc(100vw - 32px));
+    margin-inline: auto;
+  }
+  
+  /* Improved hero section */
+  .hero {
+    padding: 32px 0 24px;
+    text-align: center;
+  }
+  
+  .hero-wrap {
+    gap: 24px;
+  }
+  
+  .hero h2 {
+    font-size: clamp(28px, 8vw, 40px);
+    line-height: 1.2;
+    margin: 8px 0 16px;
+  }
+  
+  .hero p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0 0 20px;
+  }
+  
+  /* Mobile-optimized buttons */
+  .hero .grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+  
+  .btn {
+    min-height: 48px; /* Better touch target */
+    padding: 14px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  /* Badge row optimization */
+  .badge-row {
+    justify-content: center;
+    gap: 6px;
+    margin-top: 16px;
+  }
+  
+  .chip {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+  
+  /* Section improvements */
+  section {
+    padding: 32px 0;
+  }
+  
+  .section-title {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  
+  .section-title h3 {
+    font-size: clamp(24px, 6vw, 32px);
+  }
+  
+  /* Card optimizations */
+  .card {
+    margin-bottom: 16px;
+  }
+  
+  .card-pad {
+    padding: 20px;
+  }
+  
+  /* Service cards */
+  .service-actions {
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  
+  .service-actions .btn {
+    width: 100%;
+  }
+  
+  /* Pricing cards */
+  .price {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .price .btn {
+    width: 100%;
+    margin-top: 16px;
+  }
+}
+
+/* Small mobile optimizations */
+@media (max-width: 480px) {
+  .container {
+    width: min(100%, calc(100vw - 24px));
+  }
+  
+  /* Typography scaling */
+  .hero h2 {
+    font-size: clamp(24px, 7vw, 32px);
+  }
+  
+  .section-title h3 {
+    font-size: clamp(20px, 5vw, 28px);
+  }
+  
+  /* Compact spacing */
+  section {
+    padding: 24px 0;
+  }
+  
+  .grid {
+    gap: 12px;
+  }
+  
+  .card-pad {
+    padding: 16px;
+  }
+  
+  /* Form optimizations */
+  .field input,
+  .field select,
+  .field textarea {
+    padding: 14px 16px;
+    font-size: 16px; /* Prevents zoom on iOS */
+    border-radius: 8px;
+  }
+  
+  /* Floating CTA adjustments */
+  .floating-cta {
+    right: 16px;
+    bottom: 16px;
+    padding: 12px 16px;
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+  }
+  
+  .floating-cta span {
+    display: none; /* Show only icon on small screens */
+  }
+  
+  .floating-cta svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* Extra small mobile */
+@media (max-width: 360px) {
+  .container {
+    width: min(100%, calc(100vw - 20px));
+  }
+  
+  .hero h2 {
+    font-size: 22px;
+  }
+  
+  .section-title h3 {
+    font-size: 18px;
+  }
+  
+  .btn {
+    padding: 12px 16px;
+    font-size: 14px;
+    min-height: 44px;
+  }
+  
+  .chip {
+    font-size: 10px;
+    padding: 3px 6px;
+  }
+}
+
+/* Landscape mobile optimization */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero {
+    padding: 20px 0 16px;
+  }
+  
+  .hero h2 {
+    font-size: 24px;
+    margin: 4px 0 8px;
+  }
+  
+  .hero p {
+    font-size: 14px;
+    margin: 0 0 12px;
+  }
+  
+  section {
+    padding: 20px 0;
+  }
+  
+  .section-title {
+    margin-bottom: 16px;
+  }
+}
+
+/* PWA-style safe areas for notched devices */
+@supports (padding: max(0px)) {
+  .container {
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
+  }
+  
+  header {
+    padding-top: env(safe-area-inset-top);
+  }
+  
+  .floating-cta {
+    right: max(16px, env(safe-area-inset-right));
+    bottom: max(16px, env(safe-area-inset-bottom));
+  }
+}
+
+/* Dark mode support for mobile */
+@media (prefers-color-scheme: dark) {
+  #mainNav ul {
+    background: rgba(28, 28, 28, 0.98);
+    color: #ffffff;
+  }
+  
+  #mainNav ul li a {
+    color: #ffffff;
+  }
+  
+  #mainNav ul li a:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}

@@ -52,6 +52,62 @@ form {
   border-color: #10b981;
 }
 
+/* Mobile-optimized validation states */
+.field-invalid input,
+.field-invalid select,
+.field-invalid textarea {
+  border-color: #ef4444;
+  background-color: #fef2f2;
+}
+
+.field-valid input,
+.field-valid select,
+.field-valid textarea {
+  border-color: #10b981;
+  background-color: #f0fdf4;
+}
+
+.field-error {
+  color: #dc2626;
+  font-size: 14px;
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.field-error::before {
+  content: '⚠';
+  font-size: 12px;
+}
+
+/* Loading button state */
+.btn-loading {
+  opacity: 0.7;
+  cursor: not-allowed;
+  position: relative;
+}
+
+.btn-loading::after {
+  content: '';
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: translateY(-50%) rotate(360deg);
+  }
+}
+
 /* Form messages */
 .form-message {
   padding: 12px;

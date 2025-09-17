@@ -3,6 +3,7 @@ const FormManager = {
   init() {
     this.setupServicePrefill();
     this.setupFormHandlers();
+    this.setupMobileOptimizations();
   },
   
   setupServicePrefill() {
@@ -104,6 +105,158 @@ const FormManager = {
     } catch (error) {
       Utils.log(`Form submission failed: ${error.message}`, 'error');
     }
+  },
+  
+  setupMobileOptimizations() {
+    // Optimize forms for mobile devices
+    Utils.$$('input, select, textarea').forEach(field => {
+      this.optimizeFieldForMobile(field);
+    });
+    
+    // Setup mobile-friendly validation
+    Utils.$$('form').forEach(form => {
+      this.setupMobileValidation(form);
+    });
+  },
+  
+  optimizeFieldForMobile(field) {
+    const type = field.type || field.tagName.toLowerCase();
+    
+    // Set appropriate input modes and keyboards
+    switch (type) {
+      case 'email':
+        field.setAttribute('inputmode', 'email');
+        field.setAttribute('autocomplete', 'email');
+        field.setAttribute('autocapitalize', 'none');
+        field.setAttribute('autocorrect', 'off');
+        field.setAttribute('spellcheck', 'false');
+        break;
+        
+      case 'tel':
+        field.setAttribute('inputmode', 'tel');
+        field.setAttribute('autocomplete', 'tel');
+        field.setAttribute('autocapitalize', 'none');
+        field.setAttribute('autocorrect', 'off');
+        field.setAttribute('spellcheck', 'false');
+        break;
+        
+      case 'text':
+        if (field.name && field.name.includes('name')) {
+          field.setAttribute('autocomplete', 'name');
+          field.setAttribute('autocapitalize', 'words');
+        } else if (field.name && field.name.includes('address')) {
+          field.setAttribute('autocomplete', 'street-address');
+          field.setAttribute('autocapitalize', 'words');
+        }
+        break;
+        
+      case 'textarea':
+        field.setAttribute('autocapitalize', 'sentences');
+        field.style.resize = 'vertical';
+        field.style.minHeight = '100px';
+        break;
+    }
+    
+    // Prevent zoom on iOS by ensuring font-size is at least 16px
+    const computedStyle = window.getComputedStyle(field);
+    const fontSize = parseFloat(computedStyle.fontSize);
+    if (fontSize < 16) {
+      field.style.fontSize = '16px';
+    }
+  },
+  
+  setupMobileValidation(form) {
+    // Handle form submission with mobile optimizations
+    const originalSubmitHandler = form.onsubmit;
+    
+    form.addEventListener('invalid', (e) => {
+      e.preventDefault();
+      
+      // Find first invalid field and scroll to it
+      const firstInvalid = form.querySelector(':invalid');
+      if (firstInvalid) {
+        setTimeout(() => {
+          firstInvalid.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'center',
+            inline: 'nearest'
+          });
+          firstInvalid.focus();
+        }, 100);
+      }
+    }, true);
+    
+    // Add real-time validation for better UX
+    Utils.$$('input, select, textarea', form).forEach(field => {
+      field.addEventListener('blur', () => {
+        if (field.value.trim() !== '') {
+          this.showFieldValidation(field);
+        }
+      });
+      
+      field.addEventListener('focus', () => {
+        this.clearFieldValidation(field);
+      });
+    });
+  },
+  
+  showFieldValidation(field) {
+    const isValid = field.checkValidity();
+    const fieldContainer = field.closest('.field');
+    
+    if (!fieldContainer) return;
+    
+    fieldContainer.classList.remove('field-valid', 'field-invalid');
+    
+    const existingError = fieldContainer.querySelector('.field-error');
+    if (existingError) {
+      existingError.remove();
+    }
+    
+    if (!isValid) {
+      fieldContainer.classList.add('field-invalid');
+      
+      const errorMsg = document.createElement('div');
+      errorMsg.className = 'field-error';
+      errorMsg.textContent = this.getValidationMessage(field);
+      fieldContainer.appendChild(errorMsg);
+    } else {
+      fieldContainer.classList.add('field-valid');
+    }
+  },
+  
+  clearFieldValidation(field) {
+    const fieldContainer = field.closest('.field');
+    if (fieldContainer) {
+      fieldContainer.classList.remove('field-valid', 'field-invalid');
+      const errorMsg = fieldContainer.querySelector('.field-error');
+      if (errorMsg) {
+        errorMsg.remove();
+      }
+    }
+  },
+  
+  getValidationMessage(field) {
+    if (field.validity.valueMissing) {
+      const label = field.closest('.field')?.querySelector('label');
+      const fieldName = label ? label.textContent : 'This field';
+      return `${fieldName} is required`;
+    }
+    if (field.validity.typeMismatch) {
+      if (field.type === 'email') {
+        return 'Please enter a valid email address';
+      }
+      if (field.type === 'tel') {
+        return 'Please enter a valid phone number';
+      }
+    }
+    if (field.validity.tooShort) {
+      return 'This field is too short';
+    }
+    if (field.validity.tooLong) {
+      return 'This field is too long';
+    }
+    return 'Please check this field';
   }
 };
 
