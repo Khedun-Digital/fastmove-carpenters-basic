@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://khedun-digital.github.io/fastmove-carpenters-basic/seo/sitemap.xml
