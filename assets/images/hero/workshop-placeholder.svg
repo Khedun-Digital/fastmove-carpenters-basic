@@ -1,0 +1,13 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f3f4f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e5e7eb;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <circle cx="800" cy="450" r="80" fill="#0F6F6F" opacity="0.1"/>
+  <text x="800" y="420" font-family="Inter, sans-serif" font-size="32" font-weight="600" fill="#6B7280" text-anchor="middle">Carpentry Workshop</text>
+  <text x="800" y="460" font-family="Inter, sans-serif" font-size="18" fill="#9CA3AF" text-anchor="middle">Replace with actual workshop photo</text>
+  <text x="800" y="490" font-family="Inter, sans-serif" font-size="14" fill="#9CA3AF" text-anchor="middle">Recommended: 1600x900px JPG</text>
+</svg>

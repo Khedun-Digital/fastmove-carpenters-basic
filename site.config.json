@@ -1,0 +1,87 @@
+{
+  "site": {
+    "name": "FastMove Carpenters",
+    "tagline": "Quality carpentry. Fast turnaround.",
+    "description": "Registered carpentry company in Pietermaritzburg delivering kitchens, built-ins, doors, decks & shopfitting with fast turnaround.",
+    "url": "https://khedun-digital.github.io/fastmove-carpenters-basic/",
+    "language": "en-ZA"
+  },
+  "business": {
+    "legalName": "JOACHIM FASTMOVE CARPENTERS",
+    "registrationNumber": "2024/791366/07",
+    "taxNumber": "9213686273",
+    "address": {
+      "street": "19 Syndicate",
+      "city": "Pietermaritzburg",
+      "province": "KwaZulu-Natal",
+      "postalCode": "3201",
+      "country": "ZA"
+    },
+    "hours": "Mo-Fr 08:00-17:00, Sa 08:00-13:00",
+    "serviceArea": "ZA-KZN"
+  },
+  "contact": {
+    "phone": "+27-82-000-0000",
+    "whatsappE164": "27820000000",
+    "email": "hello@fastmovecarpenters.co.za"
+  },
+  "theme": {
+    "primaryColor": "#0F6F6F",
+    "accentColor": "#E0A100",
+    "darkColor": "#1C1C1C",
+    "mutedColor": "#6B7280",
+    "backgroundColor": "#F7F7F7",
+    "whiteColor": "#FFFFFF"
+  },
+  "features": {
+    "testimonialAutoRotate": true,
+    "testimonialInterval": 5000,
+    "smoothScroll": true,
+    "analytics": true,
+    "formValidation": true
+  },
+  "services": [
+    {
+      "id": "kitchens",
+      "name": "Kitchens & Cabinetry",
+      "description": "Design, fabrication, and installation of kitchen units, islands, and storage.",
+      "duration": "7–21 days",
+      "startingPrice": "R35,000"
+    },
+    {
+      "id": "builtins",
+      "name": "Built-in Cupboards",
+      "description": "Wardrobes and storage systems tailored to room dimensions.",
+      "duration": "5–14 days",
+      "startingPrice": "R12,000"
+    },
+    {
+      "id": "doors",
+      "name": "Doors & Frames",
+      "description": "Door hanging, frame repairs, and locksets for homes and light commercial.",
+      "duration": "1–2 days",
+      "startingPrice": "R900"
+    },
+    {
+      "id": "decking",
+      "name": "Decking & Exterior Wood",
+      "description": "Hardwood decking, pergolas, and outdoor wood maintenance.",
+      "duration": "3–10 days",
+      "startingPrice": "R1,500/m²"
+    },
+    {
+      "id": "repairs",
+      "name": "Repairs & Refinishing",
+      "description": "Fix squeaks, rot, water damage, and refinish worn surfaces.",
+      "duration": "1–3 days",
+      "startingPrice": "R650"
+    },
+    {
+      "id": "shopfitting",
+      "name": "Shopfitting & Office",
+      "description": "Counters, shelving, and displays for retail & office spaces.",
+      "duration": "5–15 days",
+      "startingPrice": "R18,000"
+    }
+  ]
+}

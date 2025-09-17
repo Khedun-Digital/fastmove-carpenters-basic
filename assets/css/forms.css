@@ -1,0 +1,73 @@
+/* Form styles */
+
+form {
+  display: grid;
+  gap: 12px;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+}
+
+.field label {
+  font-weight: 500;
+  color: var(--dark);
+}
+
+.field input,
+.field select,
+.field textarea {
+  padding: 12px 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: inherit;
+  transition: var(--transition-fast) border-color, var(--transition-fast) box-shadow;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(15,111,111,.1);
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Form validation states */
+.field input:invalid,
+.field select:invalid,
+.field textarea:invalid {
+  border-color: #ef4444;
+}
+
+.field input:valid,
+.field select:valid,
+.field textarea:valid {
+  border-color: #10b981;
+}
+
+/* Form messages */
+.form-message {
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.form-message.success {
+  background: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #10b981;
+}
+
+.form-message.error {
+  background: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #ef4444;
+}

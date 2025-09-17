@@ -1,0 +1,119 @@
+/* Section-specific styles */
+
+/* Services */
+.service-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.service-card h4 {
+  margin: 6px 0 8px;
+}
+
+.service-meta {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  color: #4b5563;
+  font-size: 13px;
+}
+
+.service-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+/* Portfolio */
+.portfolio-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.portfolio-item {
+  overflow: hidden;
+}
+
+.portfolio-item img {
+  aspect-ratio: 16/10;
+  object-fit: cover;
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
+}
+
+.portfolio-item .card-pad {
+  border-top: 1px solid #f1f1f1;
+}
+
+/* Pricing */
+.price-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.price {
+  padding: 22px;
+}
+
+.price h4 {
+  margin: 0 0 6px;
+}
+
+.price .amount {
+  font-weight: 800;
+  font-size: 28px;
+}
+
+.price ul {
+  margin: 12px 0;
+  padding-left: 18px;
+}
+
+.price li {
+  margin: 6px 0;
+}
+
+/* FAQ */
+.faq {
+  border: 1px solid #eee;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.faq details {
+  border-top: 1px solid #eee;
+}
+
+.faq details:first-child {
+  border-top: none;
+}
+
+.faq summary {
+  list-style: none;
+  padding: 16px 18px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: var(--transition-fast) background-color;
+}
+
+.faq summary:hover {
+  background: rgba(15,111,111,.03);
+}
+
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq summary span {
+  transition: var(--transition-fast) transform;
+}
+
+details[open] summary span {
+  transform: rotate(45deg);
+}
+
+.faq .answer {
+  padding: 0 18px 18px;
+  color: #4b5563;
+}

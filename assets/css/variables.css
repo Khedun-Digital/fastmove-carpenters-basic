@@ -1,0 +1,29 @@
+/* CSS Custom Properties / Variables */
+:root {
+  /* Colors */
+  --primary: #0F6F6F;
+  --accent: #E0A100;
+  --dark: #1C1C1C;
+  --muted: #6B7280;
+  --bg: #F7F7F7;
+  --white: #FFFFFF;
+  
+  /* Layout */
+  --radius: 14px;
+  --shadow: 0 10px 30px rgba(0,0,0,.08);
+  --shadow-hover: 0 15px 40px rgba(0,0,0,.12);
+  
+  /* Spacing */
+  --container-max: 1200px;
+  --container-padding: 92%;
+  --grid-gap: 22px;
+  --section-padding: 54px;
+  
+  /* Typography */
+  --font-primary: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-display: "Playfair Display", serif;
+  
+  /* Transitions */
+  --transition-fast: 0.2s;
+  --transition-smooth: 0.3s;
+}
